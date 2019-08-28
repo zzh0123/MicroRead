@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.zhenhua.microread"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    //导入RxJava 和 RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.x.y'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    //导入retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //转换器，请求结果转换成Model
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    //配合Rxjava 使用
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    //添加HttpLoggingInterceptor进行调试
+    //butterknife不是必须
+//    implementation 'com.jakewharton:butterknife:7.0.1'
+    //开源日志库
+    implementation 'com.orhanobut:logger:1.15'
+    //导入Gson 库
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    // butterknife
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+    // fastjson
+    implementation 'com.alibaba:fastjson:1.1.71.android'
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    // 1.5.9 is the main  XRecyclerView(上拉下拉)
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+
+    // 倒计时
+    implementation 'com.github.iwgang:countdownview:2.1.6'
+
+    //gradle版本在3.0以上引入此行 图片选择器
+    implementation 'com.lcw.library:imagepicker:2.2.2'
+}

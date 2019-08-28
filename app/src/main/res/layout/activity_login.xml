@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    tools:context=".activity.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:gravity="left"
+        android:text="欢迎登录微读"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/ll_center"/>
+
+    <LinearLayout
+        android:id="@+id/ll_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <com.zhenhua.microread.widget.ClearEditText
+            android:id="@+id/et_phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_bg_underline"
+            android:digits="1234567890"
+            android:drawableLeft="@null"
+            android:drawableRight="@mipmap/ic_clear_all"
+            android:hint="请输入手机号"
+            android:inputType="phone|number"
+            android:maxLength="11"
+            android:paddingTop="5dp"
+            android:paddingBottom="15dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="未注册的手机号验证后自动创建微读账户"
+            android:textColor="@color/grey2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_getVerifyCode"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bt_rectangle_shape_grey"
+            android:text="获取短信验证码"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_wexin_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_wx_login" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:text="使用微信登录"
+            android:textColor="@color/grey2"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</RelativeLayout>
