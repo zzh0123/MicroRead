@@ -30,9 +30,8 @@ public class MainPresenter implements Presenter<MainView> {
         if (view != null) view = null;
     }
 
-    public void releastShare(RequestBody userId, RequestBody content, RequestBody typeList,
-                             MultipartBody.Part[] parts){
-        MianSubscribe.multiUpload(userId, content, typeList, parts, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
+    public void releastShare(Map<String, RequestBody> map, List<MultipartBody.Part> parts){
+        MianSubscribe.multiUpload(map, parts, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
             @Override
             public void onSuccess(String result) {
                 view.showMessage(result);

@@ -36,7 +36,6 @@ public interface HttpApi {
     Observable<ResponseBody> login(@FieldMap Map<String, Object> map);
 
 
-
     @GET("getUsers")
     Observable<ResponseBody> getUsers();
 
@@ -60,39 +59,6 @@ public interface HttpApi {
     @FormUrlEncoded
     Observable<ResponseBody> insertUser2(@FieldMap Map<String, Object> map);
 
-
-    @GET("sms/getCode")
-    Observable<ResponseBody> getVerificationCode(@QueryMap Map<String, Object> map);
-
-    @POST("salesman/login/salesmanLogin")
-    @FormUrlEncoded
-    Observable<ResponseBody> salesmanLogin(@FieldMap Map<String, Object> map);
-
-    @GET("salesman/getSalesmanInfo")
-    Observable<ResponseBody> getSalesmanInfo(@QueryMap Map<String, Object> map);
-
-    @GET("salesman/getOrderData")
-    Observable<ResponseBody> getOrderData(@QueryMap Map<String, Object> map);
-
-    @GET("salesman/getInviteMode")
-    Observable<ResponseBody> getInviteMode(@QueryMap Map<String, Object> map);
-
-    @GET("salesman/getUserDate")
-    Observable<ResponseBody> getUserDate(@QueryMap Map<String, Object> map);
-
-    @GET("salesman/getSalesmanTree")
-    Observable<ResponseBody> getSalesmanTree(@QueryMap Map<String, Object> map);
-
-    @GET("order/changeOrderStatus")
-    Observable<ResponseBody> changeOrderStatus(@QueryMap Map<String, Object> map);
-
-
-
-
-
-
-
-
     @GET("getUsers")
     Observable<ResponseBody> getWeatherDataForQuery(@Query("version") String version, @Query("city") String city);
 
@@ -114,14 +80,23 @@ public interface HttpApi {
     @Multipart
     Observable<ResponseBody> upload(@Part MultipartBody.Part part);
 
+//    @POST("share/multiUpload")
+//    @Multipart
+//    Observable<ResponseBody> multiUpload(@Part("userId") RequestBody userId,
+//                                         @Part("content") RequestBody content,
+//                                         @Part("typeList") RequestBody typeList,
+//                                         @Part MultipartBody.Part[] parts);
+
     @POST("share/multiUpload")
     @Multipart
-    Observable<ResponseBody> multiUpload(@Part("userId") RequestBody userId,
-                                         @Part("content") RequestBody content,
-                                         @Part("typeList") RequestBody typeList,
-                                         @Part MultipartBody.Part[] parts);
+    Observable<ResponseBody> multiUpload(@PartMap Map<String, RequestBody> map,
+                                          @Part() List<MultipartBody.Part> parts);
 
     @POST("share/test")
 //    @Multipart
     Observable<ResponseBody> test(@Body List<Integer> typeList);
+
+//    @POST("share/test")
+//    @Multipart
+//    Observable<ResponseBody> test(@Part("age") String age, @PartMap Map<String, RequestBody> map);
 }

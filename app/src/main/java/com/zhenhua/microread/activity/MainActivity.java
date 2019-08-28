@@ -137,24 +137,35 @@ public class MainActivity extends AppCompatActivity implements MainView {
         LogUtils.i("--userId--", "--userId--" + userId);
         String content = "的路嘻嘻嘻！";
 
-        RequestBody requestBody1 = toRequestBody(userId);
-        RequestBody requestBody2 = toRequestBody(content);
-        String json_str = JSON.toJSONString(typeList);
-        RequestBody requestBody3 = RequestBody.create(MediaType.parse("application/json"), json_str);
 //        Gson  gson = new Gson();
 //        String json_str = gson.toJson(typeList);
 //        RequestBody requestBody3 = RequestBody.create(MediaType.parse("application/json; charset=utf-8"),json_str);
 
 //        Map<String, RequestBody> map = new HashMap<>();
 
-        MultipartBody.Part[] parts = new MultipartBody.Part[imagePathList.size()];
+        String json_str = JSON.toJSONString(typeList);
+        RequestBody requestBody3 = RequestBody.create(MediaType.parse("application/json;charset=utf-8"), json_str);
+//        RequestBody requestBody3 = toRequestBody(json_str);
+
+        RequestBody requestBody_userId = toRequestBody(userId);
+        RequestBody requestBody_content = toRequestBody(content);
+        Map<String, RequestBody> map = new HashMap<String, RequestBody>();
+        map.put("typeList", requestBody3);
+        map.put("userId", requestBody_userId);
+        map.put("content", requestBody_content);
+
+
+        List<MultipartBody.Part> parts = new ArrayList<MultipartBody.Part>();
         for (int i = 0; i < imagePathList.size(); i++) {
             File file = new File(imagePathList.get(i));
             RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
             MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
-            parts[i] = filePart;
+//            parts[i] = filePart;
+            parts.add(filePart);
+
+            typeList.add(1);
         }
-        presenter.releastShare(requestBody1, requestBody2, requestBody3, parts);
+        presenter.releastShare(map, parts);
     }
 
     public RequestBody toRequestBody(String value) {

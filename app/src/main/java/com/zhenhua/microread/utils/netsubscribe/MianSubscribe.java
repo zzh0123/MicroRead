@@ -23,9 +23,8 @@ public class MianSubscribe {
      * @param parts
      * @param subscriber
      */
-    public static void multiUpload(RequestBody userId, RequestBody content, RequestBody typeList,
-                                   MultipartBody.Part[] parts, DisposableObserver<ResponseBody> subscriber) {
-        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().multiUpload(userId, content, typeList, parts);
+    public static void multiUpload(Map<String, RequestBody> map, List<MultipartBody.Part> parts, DisposableObserver<ResponseBody> subscriber) {
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().multiUpload(map, parts);
         RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 
