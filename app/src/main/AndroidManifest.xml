@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ReleaseShareActivity"></activity>
+        <activity android:name=".activity.PublishShortVideoActivity"></activity>
+        <activity android:name=".activity.PublishArticleActivity" />
+        <activity android:name=".activity.PublishImageAndTextActivity" />
         <activity android:name=".activity.VerifyCodeActivity" />
         <activity
             android:name=".activity.MainActivity"
@@ -25,9 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--<activity android:name=".activity.MainActivity" />-->
-
+        </activity> <!-- <activity android:name=".activity.MainActivity" /> -->
         <activity android:name=".activity.LoginActivity" />
     </application>
 

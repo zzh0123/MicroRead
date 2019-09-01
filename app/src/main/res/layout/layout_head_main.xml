@@ -23,14 +23,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:padding="6dp"
-            android:src="@mipmap/search" />
+            android:src="@mipmap/ic_search" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="搜索内容"
-            android:textColor="@color/grey2"
+            android:textColor="@color/grey1"
             android:textSize="13sp" />
     </LinearLayout>
 
@@ -40,5 +40,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
-        android:src="@mipmap/take_photo" />
+        android:src="@mipmap/ic_take_photo" />
 </LinearLayout>
