@@ -172,7 +172,7 @@ public class OnSuccessAndFaultSub extends DisposableObserver<ResponseBody>
 //            JSONObject jsonObject = new JSONObject(result);
             int resultCode = resultInfo.getCode();
 //            String data = resultInfo.getData().toString();
-            if (resultCode == 200) { // 800  1
+            if (resultCode == 800) { // 800  1
                 mOnSuccessAndFaultListener.onSuccess(result);
             } else {
                 String errorMsg = resultInfo.getMessage();

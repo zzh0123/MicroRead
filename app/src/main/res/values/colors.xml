@@ -12,4 +12,7 @@
     <color name="transparent">#00000000</color>
     <color name="orange">#FF9800</color>
     <color name="blue">#17abe3</color>
+
+    <!--九宫格glide-->
+    <color name="ic_default_bg_color">#33000000</color>
 </resources>

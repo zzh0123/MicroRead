@@ -3,16 +3,20 @@ package com.zhenhua.microread.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.util.LogPrinter;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.zhenhua.microread.MyApplication;
 import com.zhenhua.microread.R;
 import com.zhenhua.microread.presenter.LoginPresenter;
 import com.zhenhua.microread.utils.LogUtils;
+import com.zhenhua.microread.utils.SPUtils;
 import com.zhenhua.microread.utils.ToastUtils;
 import com.zhenhua.microread.view.LoginView;
 import com.zhenhua.microread.widget.ClearEditText;
@@ -46,12 +50,22 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         presenter = new LoginPresenter();
         presenter.attachView(this);
         setContentView(R.layout.activity_login);
+
+        MyApplication.addActivity(this);
         // 必须在setContentView();之后
         ButterKnife.bind(this);
+
+        // 用户id
+        String userId = (String) SPUtils.get(LoginActivity.this, "userId", "");
+        if (!TextUtils.isEmpty(userId)){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @OnTextChanged(value = R.id.et_phoneNum, callback = AFTER_TEXT_CHANGED )
-    void onAfterTextChange(Editable editable) {
+    public void onAfterTextChange(Editable editable) {
         if (editable.toString().trim().length() == 11) {
             tv_getVerifyCode.setClickable(true);
             tv_getVerifyCode.setBackgroundResource(R.drawable.bt_rectangle_shape_orange);
@@ -87,7 +101,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onDestroy() {
         presenter.detachView();
         super.onDestroy();
-        LogUtils.i("--detachView--", "--detachView--");
+//        LogUtils.i("--detachView--", "--detachView--");
+        MyApplication.delActivity(this);
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.zhenhua.microread.MyApplication;
 import com.zhenhua.microread.R;
 import com.zhenhua.microread.presenter.LoginPresenter;
 import com.zhenhua.microread.presenter.VerifyCodePresenter;
@@ -47,6 +48,7 @@ public class VerifyCodeActivity extends AppCompatActivity implements VerifyCodeV
         presenter.attachView(this);
         setContentView(R.layout.activity_verify_code);
 
+        MyApplication.addActivity(this);
         ButterKnife.bind(this);
         initView();
         phoneNum = getIntent().getStringExtra("phoneNum");
@@ -128,5 +130,6 @@ public class VerifyCodeActivity extends AppCompatActivity implements VerifyCodeV
     protected void onDestroy() {
         presenter.detachView();
         super.onDestroy();
+        MyApplication.delActivity(this);
     }
 }

@@ -3,7 +3,12 @@ package com.zhenhua.microread;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.lzy.ninegrid.NineGridView;
 import com.zhenhua.microread.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -24,6 +29,9 @@ public class MyApplication extends Application {
         appContext = getApplicationContext();
         app = this;
         LogUtils.isDebug = true;
+
+        // 设置九宫格图片加载框架
+        NineGridView.setImageLoader(new GlideImageLoader());
     }
 
     public static Context getContext(){
@@ -43,10 +51,29 @@ public class MyApplication extends Application {
     }
 
     //遍历所有Activity并finish
-    public void exit() {
+    public static void exit() {
         for(Activity activity:allActivities) {
             activity.finish();
         }
         allActivities.clear();
+    }
+
+    /** Glide 加载 */
+    private class GlideImageLoader implements NineGridView.ImageLoader {
+        @Override
+        public void onDisplayImage(Context context, ImageView imageView, String url) {
+            Glide.with(context).load(url)//
+                    .placeholder(R.drawable.ic_default_color)//
+                    .error(R.drawable.ic_default_color)//
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)//
+//                    .skipMemoryCache(true) // 不使用内存缓存
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView);
+        }
+
+        @Override
+        public Bitmap getCacheImage(String url) {
+            return null;
+        }
     }
 }

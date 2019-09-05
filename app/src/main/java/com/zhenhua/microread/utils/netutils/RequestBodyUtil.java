@@ -1,5 +1,6 @@
 package com.zhenhua.microread.utils.netutils;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 import okhttp3.MediaType;
@@ -16,8 +17,9 @@ public class RequestBodyUtil {
         return requestBody;
     }
 
-    public static RequestBody toRequestBodyJson(JSONObject jsonObject) {
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonObject.toJSONString());
+    public static RequestBody toRequestBodyJson(Object object) {
+        String jsonStr = JSON.toJSONString(object);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonStr);
         return requestBody;
     }
 }

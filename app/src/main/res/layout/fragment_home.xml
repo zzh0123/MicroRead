@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/stl_home_fg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#3F9FE0"
+        android:layout_alignParentTop="true"
+        tl:tl_textAllCaps="true"
+        tl:tl_textBold="BOTH"
+        tl:tl_textsize="14sp"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_home_fg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="home" />
+        android:layout_below="@id/stl_home_fg"/>
 
-</FrameLayout>
+</RelativeLayout>

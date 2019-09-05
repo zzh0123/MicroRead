@@ -35,6 +35,9 @@ public interface HttpApi {
     @FormUrlEncoded
     Observable<ResponseBody> login(@FieldMap Map<String, Object> map);
 
+    @GET("share/getShareList")
+    Observable<ResponseBody> getShareList(@QueryMap Map<String, Object> map);
+
 
     @GET("getUsers")
     Observable<ResponseBody> getUsers();
@@ -90,7 +93,7 @@ public interface HttpApi {
     @POST("share/multiUpload")
     @Multipart
     Observable<ResponseBody> multiUpload(@PartMap Map<String, RequestBody> map,
-                                          @Part() List<MultipartBody.Part> parts);
+                                          @Part List<MultipartBody.Part> parts);
 
     @POST("share/test")
 //    @Multipart
